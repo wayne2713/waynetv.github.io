@@ -5,56 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WayneTV - Live Matches</title>
     <style>
+        :root {
+            --bg-deep: #0f1117;
+            --bg-card: #161922;
+            --bg-header: #1c202d;
+            --accent-glow: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --live-red: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #09090e;
-            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-main);
             margin: 0;
-            padding: 15px;
+            padding: 20px 15px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
         }
+
         h1 {
-            color: #ff3b3b;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-align: center;
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-        .stream-card {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             margin-bottom: 25px;
-            background: #14141c;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .stream-card {
+            margin-bottom: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             overflow: hidden;
-            max-width: 700px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
+
+        .stream-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
         .card-header {
-            padding: 12px 15px;
-            background: #181822;
+            padding: 14px 18px;
+            background: var(--bg-header);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--border-color);
         }
+
         .card-header h3 {
             margin: 0;
-            color: #fff;
-            font-size: 15px;
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
         }
+
         .badge-live {
-            background-color: #ff3b3b;
-            color: white;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--live-red);
             font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
-        .language-bar {
-            background: #12121a;
-            padding: 10px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        .badge-live::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--live-red);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--live-red);
+            animation: pulse 2s infinite;
         }
-        .language-select {
-            background: #1f1f2b;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 8px 1
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>WayneTV</h1>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Barcelona vs Valencia</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://streamxhd.st/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Chelsea vs Arsenal</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://dlive.sx/player/stream-130.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>ESPN</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://streamxhd.com/live2.php?stream=espndeportes" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
