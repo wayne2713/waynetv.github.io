@@ -39,15 +39,6 @@
             margin: 0;
             color: #fff;
             font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .card-thumb {
-            width: 35px;
-            height: 22px;
-            object-fit: cover;
-            border-radius: 4px;
         }
         .badge-live {
             background-color: #ff3b3b;
@@ -93,20 +84,6 @@
 
     <h1>WayneTV</h1>
 
-    <!-- Manchester United vs Everton with Thumbnail -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>
-                <img src="https://i.ibb.co/6y4j155/1000465550.jpg" alt="Man Utd vs Everton" class="card-thumb">
-                Manchester United vs Everton
-            </h3>
-            <span class="badge-live">LIVE</span>
-        </div>
-        <div class="video-container">
-            <iframe style="border:1px #FFFFFF none" src="https://embed.st/embed/admin/ppv-everton-vs-manchester-united/1" title="iFrame" width="100%" height="100%" scrolling="no" frameborder="no" allow="fullscreen"></iframe>
-        </div>
-    </div>
-
     <div class="stream-card">
         <div class="card-header">
             <h3>LaLiga TV</h3>
@@ -114,6 +91,60 @@
         </div>
         <div class="video-container">
             <iframe src="https://dlive.sx/watch/stream-84.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Liverpool vs Ipswich</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="language-bar">
+            <select class="language-select" onchange="changeLanguage(this, 'liverpool-stream')">
+                <option value="https://epiembeds.online/embed/skysportsmainevent-uk">Sky Sport Main event</option>
+                <option value="https://dlstreams.st/plus/stream-38.php">Sky sports (2)</option>
+            </select>
+        </div>
+        <div class="video-container">
+            <iframe id="liverpool-stream" src="https://epiembeds.online/embed/skysportsmainevent-uk" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Real Madrid vs Real Betis</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="language-bar">
+            <select class="language-select" onchange="changeLanguage(this, 'madrid-stream')">
+                <option value="https://epiembeds.online/embed/movistarlaliga-es">Laliga Tv</option>
+                <option value="https://epiembeds.online/embed/beinsports2-sa">Arabic</option>
+                <option value="https://dlive.sx/stream/stream-84.php">M+ laliga</option>
+                <option value="https://epiembeds.online/embed/premiersports1-ie">English (Premier Sports 1)</option>
+            </select>
+        </div>
+        <div class="video-container">
+            <iframe id="madrid-stream" src="https://epiembeds.online/embed/movistarlaliga-es" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Sky Premier League</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://epiembeds.online/embed/skysportspremierleague-uk" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Tottenham Match</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://dlstreams.st/plus/stream-53.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -150,6 +181,16 @@
         </div>
         <div class="video-container">
             <iframe src="https://streamxhd.com/live2.php?stream=espn" width="100%" height="100%" style="border:0;" scrolling="no" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Everton vs Man Utd</h3>
+            <span class="badge-live">LIVE</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://embedindia.st/embed/pl/2026-09-06/eve-mun" width="100%" height="100%" style="border:1px #FFFFFF none;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
