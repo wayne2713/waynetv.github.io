@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +7,17 @@
     <title>WayneTV - Live Matches</title>
     <style>
         :root {
-            --bg-deep: #0f1117;
-            --bg-card: #161922;
-            --bg-header: #1c202d;
-            --accent-glow: #6366f1;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --live-red: #ef4444;
+            --bg-deep: #0b0e14;
+            --bg-card: #131822;
+            --bg-header: #19202e;
+            --accent-green: #22c55e;
+            --accent-green-glow: rgba(34, 197, 94, 0.25);
+            --accent-red: #ef4444;
+            --accent-red-glow: rgba(239, 68, 68, 0.4);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.06);
-            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --card-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
         }
 
         body {
@@ -23,44 +25,44 @@
             background: var(--bg-deep);
             color: var(--text-main);
             margin: 0;
-            padding: 20px 15px;
+            padding: 25px 15px;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.04) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(239, 68, 68, 0.03) 0%, transparent 45%);
             background-attachment: fixed;
         }
 
         h1 {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-main);
             text-align: center;
             font-size: 28px;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
         .stream-card {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
             box-shadow: var(--card-shadow);
+            position: relative;
+            background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .stream-card:hover {
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(34, 197, 94, 0.3);
         }
 
         .card-header {
-            padding: 14px 18px;
+            padding: 16px 20px;
             background: var(--bg-header);
             display: flex;
             justify-content: space-between;
@@ -71,39 +73,39 @@
         .card-header h3 {
             margin: 0;
             color: var(--text-main);
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 17px;
+            font-weight: 700;
             letter-spacing: -0.2px;
         }
 
-        .badge-live {
-            background: rgba(239, 68, 68, 0.15);
-            color: var(--live-red);
-            font-size: 10px;
-            padding: 4px 10px;
-            border-radius: 20px;
+        .badge-live-now {
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--accent-green);
+            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 30px;
             font-weight: 700;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 5px;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            gap: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
-        .badge-live::before {
+        .badge-live-now::before {
             content: '';
-            width: 6px;
-            height: 6px;
-            background-color: var(--live-red);
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent-green);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--live-red);
-            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse-green 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
+        @keyframes pulse-green {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .video-container {
@@ -130,7 +132,7 @@
     <div class="stream-card">
         <div class="card-header">
             <h3>Barcelona vs Valencia</h3>
-            <span class="badge-live">LIVE</span>
+            <span class="badge-live-now">LIVE NOW</span>
         </div>
         <div class="video-container">
             <iframe src="https://streamxhd.st/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
@@ -140,7 +142,7 @@
     <div class="stream-card">
         <div class="card-header">
             <h3>Caze TV</h3>
-            <span class="badge-live">LIVE</span>
+            <span class="badge-live-now">LIVE NOW</span>
         </div>
         <div class="video-container">
             <iframe src="//cdn.stmify.com/embed-free/v1/cazetv-br-jw" width="100%" height="100%" style="border:0;" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" allowfullscreen allow="encrypted-media"></iframe>
@@ -150,13 +152,22 @@
     <div class="stream-card">
         <div class="card-header">
             <h3>ESPN</h3>
-            <span class="badge-live">LIVE</span>
+            <span class="badge-live-now">LIVE NOW</span>
         </div>
         <div class="video-container">
             <iframe src="https://streamxhd.com/live2.php?stream=espndeportes" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Sky Main Event</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://dlive.sx/cast/stream-38.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        </div>
+    </div>
+
 </body>
 </html>
-
