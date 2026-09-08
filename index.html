@@ -107,7 +107,6 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Styles for the stream selector */
         .source-bar {
             background: rgba(11, 14, 20, 0.6);
             padding: 12px 20px;
@@ -168,7 +167,24 @@
         </div>
     </div>
 
-    <!-- NEW: Real Madrid Vs Inter Milan (Multi-stream) -->
+    <!-- Manchester City vs Porto (Multi-stream) -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Manchester City vs Porto</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="source-bar">
+            <select class="source-select" onchange="changeStream(this, 'mci-por-stream')">
+                <option value="https://streamxhd.click/channel/?id=espn5">ESPN</option>
+                <option value="https://epiembeds.online/embed/tntsports2-uk">TNT 2</option>
+                <option value="https://dlive.sx/cast/stream-105.php">Paramount+</option>
+            </select>
+        </div>
+        <div class="video-container">
+            <iframe id="mci-por-stream" src="https://streamxhd.click/channel/?id=espn5" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <div class="stream-card">
         <div class="card-header">
             <h3>Real Madrid vs Inter Milan</h3>
@@ -226,4 +242,3 @@
 
 </body>
 </html>
-
