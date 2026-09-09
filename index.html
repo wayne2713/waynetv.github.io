@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WayneTV - Live Matches</title>
+    <title>WayneTV - Ultimate UCL Multiview</title>
     <style>
         :root {
             --bg-deep: #0b0e14;
             --bg-card: #131822;
             --bg-header: #19202e;
             --accent-green: #22c55e;
-            --accent-green-glow: rgba(34, 197, 94, 0.25);
-            --accent-red: #ef4444;
-            --accent-red-glow: rgba(239, 68, 68, 0.4);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
@@ -24,70 +21,49 @@
             background: var(--bg-deep);
             color: var(--text-main);
             margin: 0;
-            padding: 25px 15px;
+            padding: 20px 10px;
             background-image: 
                 radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.04) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(239, 68, 68, 0.03) 0%, transparent 45%);
+                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.03) 0%, transparent 45%);
             background-attachment: fixed;
         }
 
         h1 {
             color: var(--text-main);
             text-align: center;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 25px;
             text-transform: uppercase;
         }
 
-        /* Section Heading Style matching the reference screenshot */
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            max-width: 750px;
-            margin: 40px auto 20px auto;
-        }
-
-        .section-indicator {
-            width: 5px;
-            height: 24px;
-            background: #a855f7;
-            border-radius: 4px;
-            box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
-        }
-
-        .section-header h2 {
-            margin: 0;
-            color: var(--text-main);
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+        /* Responsive Grid for All UCL Streams */
+        .multiview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
         .stream-card {
-            margin-bottom: 35px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
             box-shadow: var(--card-shadow);
-            position: relative;
-            background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s ease;
         }
 
         .stream-card:hover {
-            border-color: rgba(34, 197, 94, 0.3);
+            border-color: rgba(168, 85, 247, 0.4);
         }
 
         .card-header {
-            padding: 16px 20px;
+            padding: 12px 16px;
             background: var(--bg-header);
             display: flex;
             justify-content: space-between;
@@ -98,7 +74,7 @@
         .card-header h3 {
             margin: 0;
             color: var(--text-main);
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 700;
             letter-spacing: -0.2px;
         }
@@ -106,24 +82,24 @@
         .badge-live-now {
             background: rgba(34, 197, 94, 0.12);
             color: var(--accent-green);
-            font-size: 11px;
-            padding: 5px 12px;
+            font-size: 10px;
+            padding: 4px 10px;
             border-radius: 30px;
             font-weight: 700;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
         .badge-live-now::before {
             content: '';
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             background-color: var(--accent-green);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
             animation: pulse-green 2s infinite;
         }
 
@@ -135,7 +111,7 @@
 
         .source-bar {
             background: rgba(11, 14, 20, 0.6);
-            padding: 12px 20px;
+            padding: 8px 16px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -143,9 +119,9 @@
             background: var(--bg-deep);
             color: var(--text-main);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
             outline: none;
             cursor: pointer;
             width: 100%;
@@ -153,13 +129,13 @@
             appearance: none; 
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 16px;
+            background-position: right 12px center;
+            background-size: 14px;
         }
 
         .source-select:hover, .source-select:focus {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2);
+            border-color: #a855f7;
+            box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2);
         }
 
         .video-container {
@@ -181,169 +157,97 @@
 </head>
 <body>
 
-    <h1>WayneTV</h1>
+    <h1>WayneTV - Ultimate UCL Multiview</h1>
 
-    <!-- UEFA CHAMPIONS LEAGUE SECTION -->
-    <div class="section-header">
-        <div class="section-indicator"></div>
-        <h2>UEFA Champions League</h2>
-    </div>
+    <div class="multiview-grid">
+        <!-- Liverpool vs Atletico Madrid -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>Liverpool vs Atletico Madrid</h3>
+                <span class="badge-live-now">LIVE</span>
+            </div>
+            <div class="source-bar">
+                <select class="source-select" onchange="changeStream(this, 'liv-atm-stream')">
+                    <option value="https://epiembeds.online/embed/beinsports3-sa">Arabic</option>
+                    <option value="https://epiembeds.online/embed/tntsports1-uk">TNT Sports 1</option>
+                    <option value="https://streamxhd.com/live2.php?stream=espn">Spanish</option>
+                </select>
+            </div>
+            <div class="video-container">
+                <iframe id="liv-atm-stream" src="https://epiembeds.online/embed/beinsports3-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
 
-    <!-- Liverpool vs Atletico Madrid -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Liverpool vs Atletico Madrid</h3>
-            <span class="badge-live-now">LIVE NOW</span>
+        <!-- PSG vs Slovan Bratislava -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>PSG vs Slovan Bratislava</h3>
+                <span class="badge-live-now">LIVE</span>
+            </div>
+            <div class="source-bar">
+                <select class="source-select" onchange="changeStream(this, 'psg-slo-stream')">
+                    <option value="https://streamxhd.com/live2.php?stream=espn3">Spanish</option>
+                    <option value="https://epiembeds.online/embed/beinsports1-sa">Arabic</option>
+                    <option value="https://epiembeds.online/embed/tntsports3-uk">English</option>
+                </select>
+            </div>
+            <div class="video-container">
+                <iframe id="psg-slo-stream" src="https://streamxhd.com/live2.php?stream=espn3" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'liv-atm-stream')">
-                <option value="https://epiembeds.online/embed/beinsports3-sa">Arabic</option>
-                <option value="https://epiembeds.online/embed/tntsports1-uk">TNT Sports 1</option>
-                <option value="https://streamxhd.com/live2.php?stream=espn">Spanish</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="liv-atm-stream" src="https://epiembeds.online/embed/beinsports3-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
 
-    <!-- PSG vs Slovan Bratislava -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>PSG vs Slovan Bratislava</h3>
-            <span class="badge-live-now">LIVE NOW</span>
+        <!-- Napoli vs Arsenal -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>Napoli vs Arsenal</h3>
+                <span class="badge-live-now">LIVE</span>
+            </div>
+            <div class="source-bar">
+                <select class="source-select" onchange="changeStream(this, 'nap-ars-stream')">
+                    <option value="https://epiembeds.online/embed/beinsports2-sa">Arabic</option>
+                    <option value="https://epiembeds.online/embed/tntsports2-uk">English</option>
+                    <option value="https://streamxhd.com/live2.php?stream=disney6">Spanish</option>
+                </select>
+            </div>
+            <div class="video-container">
+                <iframe id="nap-ars-stream" src="https://epiembeds.online/embed/beinsports2-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'psg-slo-stream')">
-                <option value="https://streamxhd.com/live2.php?stream=espn3">Spanish</option>
-                <option value="https://epiembeds.online/embed/beinsports1-sa">Arabic</option>
-                <option value="https://epiembeds.online/embed/tntsports3-uk">English</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="psg-slo-stream" src="https://streamxhd.com/live2.php?stream=espn3" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
 
-    <!-- Napoli vs Arsenal -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Napoli vs Arsenal</h3>
-            <span class="badge-live-now">LIVE NOW</span>
+        <!-- Manchester City vs Porto -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>Man City vs Porto</h3>
+                <span class="badge-live-now">LIVE</span>
+            </div>
+            <div class="source-bar">
+                <select class="source-select" onchange="changeStream(this, 'mci-por-stream')">
+                    <option value="https://streamxhd.click/channel/?id=espn5">ESPN</option>
+                    <option value="https://epiembeds.online/embed/tntsports2-uk">TNT 2</option>
+                    <option value="https://dlive.sx/cast/stream-105.php">Paramount+</option>
+                </select>
+            </div>
+            <div class="video-container">
+                <iframe id="mci-por-stream" src="https://streamxhd.click/channel/?id=espn5" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'nap-ars-stream')">
-                <option value="https://epiembeds.online/embed/beinsports2-sa">Arabic</option>
-                <option value="https://epiembeds.online/embed/tntsports2-uk">English</option>
-                <option value="https://streamxhd.com/live2.php?stream=disney6">Spanish</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="nap-ars-stream" src="https://epiembeds.online/embed/beinsports2-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
 
-    <!-- Manchester City vs Porto -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Manchester City vs Porto</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'mci-por-stream')">
-                <option value="https://streamxhd.click/channel/?id=espn5">ESPN</option>
-                <option value="https://epiembeds.online/embed/tntsports2-uk">TNT 2</option>
-                <option value="https://dlive.sx/cast/stream-105.php">Paramount+</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="mci-por-stream" src="https://streamxhd.click/channel/?id=espn5" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Real Madrid vs Inter Milan -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Real Madrid vs Inter Milan</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'rma-int-stream')">
-                <option value="https://dlive.sx/cast/stream-77.php">Paramount+</option>
-                <option value="https://streamxhd.click/channel/?id=espn">ESPN</option>
-                <option value="https://streamxhd.click/channel/?id=tnt1uk">TNT Sports</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="rma-int-stream" src="https://dlive.sx/cast/stream-77.php" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-
-    <!-- OTHER MATCHES SECTION -->
-    <div class="section-header">
-        <div class="section-indicator"></div>
-        <h2>Other Matches</h2>
-    </div>
-
-    <!-- Al Nassr vs Abha -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Al Nassr vs Abha</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'aln-abha-stream')">
-                <option value="https://dlive.sx/player/stream-521.php">Spanish</option>
-                <option value="https://iplayer.is/echo/d3d0464f821795ddc672bc916dcc187e">Portuguese</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="aln-abha-stream" src="https://dlive.sx/player/stream-521.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Barcelona vs Valencia -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Barcelona vs Valencia</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://streamxhd.st/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Chelsea vs Leeds (formerly Sky Main Event) -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Chelsea vs Leeds</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://dlive.sx/cast/stream-38.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Caze TV -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Caze TV</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="//cdn.stmify.com/embed-free/v1/cazetv-br-jw" width="100%" height="100%" style="border:0;" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" allowfullscreen allow="encrypted-media"></iframe>
-        </div>
-    </div>
-
-    <!-- ESPN -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>ESPN</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://streamxhd.com/live2.php?stream=espndeportes" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+        <!-- Real Madrid vs Inter Milan -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>Real Madrid vs Inter Milan</h3>
+                <span class="badge-live-now">LIVE</span>
+            </div>
+            <div class="source-bar">
+                <select class="source-select" onchange="changeStream(this, 'rma-int-stream')">
+                    <option value="https://dlive.sx/cast/stream-77.php">Paramount+</option>
+                    <option value="https://streamxhd.click/channel/?id=espn">ESPN</option>
+                    <option value="https://streamxhd.click/channel/?id=tnt1uk">TNT Sports</option>
+                </select>
+            </div>
+            <div class="video-container">
+                <iframe id="rma-int-stream" src="https://dlive.sx/cast/stream-77.php" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
