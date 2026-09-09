@@ -157,6 +157,23 @@
 
     <h1>WayneTV</h1>
 
+    <!-- Al Nassr vs Abha (Multi-stream) -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Al Nassr vs Abha</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="source-bar">
+            <select class="source-select" onchange="changeStream(this, 'aln-abha-stream')">
+                <option value="https://dlive.sx/player/stream-521.php">Spanish</option>
+                <option value="https://iplayer.is/echo/d3d0464f821795ddc672bc916dcc187e">Portuguese</option>
+            </select>
+        </div>
+        <div class="video-container">
+            <iframe id="aln-abha-stream" src="https://dlive.sx/player/stream-521.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <div class="stream-card">
         <div class="card-header">
             <h3>Barcelona vs Valencia</h3>
@@ -167,7 +184,6 @@
         </div>
     </div>
 
-    <!-- Manchester City vs Porto (Multi-stream) -->
     <div class="stream-card">
         <div class="card-header">
             <h3>Manchester City vs Porto</h3>
