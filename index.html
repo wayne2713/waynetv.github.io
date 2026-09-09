@@ -37,7 +37,33 @@
             font-size: 28px;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* Section Heading Style matching the reference screenshot */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 750px;
+            margin: 40px auto 20px auto;
+        }
+
+        .section-indicator {
+            width: 5px;
+            height: 24px;
+            background: #a855f7;
+            border-radius: 4px;
+            box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
@@ -157,33 +183,67 @@
 
     <h1>WayneTV</h1>
 
-    <!-- Al Nassr vs Abha (Multi-stream) -->
+    <!-- UEFA CHAMPIONS LEAGUE SECTION -->
+    <div class="section-header">
+        <div class="section-indicator"></div>
+        <h2>UEFA Champions League</h2>
+    </div>
+
+    <!-- Liverpool vs Atletico Madrid -->
     <div class="stream-card">
         <div class="card-header">
-            <h3>Al Nassr vs Abha</h3>
+            <h3>Liverpool vs Atletico Madrid</h3>
             <span class="badge-live-now">LIVE NOW</span>
         </div>
         <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'aln-abha-stream')">
-                <option value="https://dlive.sx/player/stream-521.php">Spanish</option>
-                <option value="https://iplayer.is/echo/d3d0464f821795ddc672bc916dcc187e">Portuguese</option>
+            <select class="source-select" onchange="changeStream(this, 'liv-atm-stream')">
+                <option value="https://epiembeds.online/embed/beinsports3-sa">Arabic</option>
+                <option value="https://epiembeds.online/embed/tntsports1-uk">TNT Sports 1</option>
+                <option value="https://streamxhd.com/live2.php?stream=espn">Spanish</option>
             </select>
         </div>
         <div class="video-container">
-            <iframe id="aln-abha-stream" src="https://dlive.sx/player/stream-521.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+            <iframe id="liv-atm-stream" src="https://epiembeds.online/embed/beinsports3-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
+    <!-- PSG vs Slovan Bratislava -->
     <div class="stream-card">
         <div class="card-header">
-            <h3>Barcelona vs Valencia</h3>
+            <h3>PSG vs Slovan Bratislava</h3>
             <span class="badge-live-now">LIVE NOW</span>
         </div>
+        <div class="source-bar">
+            <select class="source-select" onchange="changeStream(this, 'psg-slo-stream')">
+                <option value="https://streamxhd.com/live2.php?stream=espn3">Spanish</option>
+                <option value="https://epiembeds.online/embed/beinsports1-sa">Arabic</option>
+                <option value="https://epiembeds.online/embed/tntsports3-uk">English</option>
+            </select>
+        </div>
         <div class="video-container">
-            <iframe src="https://streamxhd.st/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+            <iframe id="psg-slo-stream" src="https://streamxhd.com/live2.php?stream=espn3" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
+    <!-- Napoli vs Arsenal -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Napoli vs Arsenal</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="source-bar">
+            <select class="source-select" onchange="changeStream(this, 'nap-ars-stream')">
+                <option value="https://epiembeds.online/embed/beinsports2-sa">Arabic</option>
+                <option value="https://epiembeds.online/embed/tntsports2-uk">English</option>
+                <option value="https://streamxhd.com/live2.php?stream=disney6">Spanish</option>
+            </select>
+        </div>
+        <div class="video-container">
+            <iframe id="nap-ars-stream" src="https://epiembeds.online/embed/beinsports2-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Manchester City vs Porto -->
     <div class="stream-card">
         <div class="card-header">
             <h3>Manchester City vs Porto</h3>
@@ -201,6 +261,7 @@
         </div>
     </div>
 
+    <!-- Real Madrid vs Inter Milan -->
     <div class="stream-card">
         <div class="card-header">
             <h3>Real Madrid vs Inter Milan</h3>
@@ -218,6 +279,53 @@
         </div>
     </div>
 
+
+    <!-- OTHER MATCHES SECTION -->
+    <div class="section-header">
+        <div class="section-indicator"></div>
+        <h2>Other Matches</h2>
+    </div>
+
+    <!-- Al Nassr vs Abha -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Al Nassr vs Abha</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="source-bar">
+            <select class="source-select" onchange="changeStream(this, 'aln-abha-stream')">
+                <option value="https://dlive.sx/player/stream-521.php">Spanish</option>
+                <option value="https://iplayer.is/echo/d3d0464f821795ddc672bc916dcc187e">Portuguese</option>
+            </select>
+        </div>
+        <div class="video-container">
+            <iframe id="aln-abha-stream" src="https://dlive.sx/player/stream-521.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Barcelona vs Valencia -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Barcelona vs Valencia</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://streamxhd.st/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Chelsea vs Leeds (formerly Sky Main Event) -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Chelsea vs Leeds</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="video-container">
+            <iframe src="https://dlive.sx/cast/stream-38.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Caze TV -->
     <div class="stream-card">
         <div class="card-header">
             <h3>Caze TV</h3>
@@ -228,6 +336,7 @@
         </div>
     </div>
 
+    <!-- ESPN -->
     <div class="stream-card">
         <div class="card-header">
             <h3>ESPN</h3>
@@ -235,16 +344,6 @@
         </div>
         <div class="video-container">
             <iframe src="https://streamxhd.com/live2.php?stream=espndeportes" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Sky Main Event</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://dlive.sx/cast/stream-38.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
         </div>
     </div>
 
