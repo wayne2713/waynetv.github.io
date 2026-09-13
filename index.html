@@ -1,9 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WayneTV - Live Matches</title>
+    <!-- Shaka Player Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/controls.css">
+    
     <style>
         :root {
             --bg-deep: #0b0e14;
@@ -177,7 +183,8 @@
             background: #000;
         }
 
-        .video-container iframe {
+        .video-container iframe,
+        .video-container div[data-shaka-player-container] {
             position: absolute;
             top: 0;
             left: 0;
@@ -197,6 +204,19 @@
     <div class="section-header">
         <div class="section-indicator"></div>
         <h2>Live Matches</h2>
+    </div>
+
+    <!-- Caze TV Prime (Shaka DRM Player) -->
+    <div class="stream-card">
+        <div class="card-header">
+            <h3>Caze TV Prime</h3>
+            <span class="badge-live-now">LIVE NOW</span>
+        </div>
+        <div class="video-container">
+            <div data-shaka-player-container style="width: 100%; height: 100%;">
+                <video data-shaka-player id="cazetv-prime-video" style="width: 100%; height: 100%;"></video>
+            </div>
+        </div>
     </div>
 
     <!-- Al Nassr vs KLJ -->
@@ -306,7 +326,6 @@
                 <option value="https://epiembeds.online/embed/daznlaliga-es">DAZN LaLiga ES</option>
                 <option value="https://streamxhd.com/live2.php?stream=daznlaliga">DAZN</option>
                 <option value="//cdn.stmify.com/embed-free/v1/cazetv-br-jw">Caze TV</option>
-                <option value="shaka_player.html?mpd=https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/3ynrpdanq2/out/v1/81fd4c26584044d2b1a1cc5b32fa9af0/cenc.mpd&kid=34475edab991ad5e92548aebd710410a&key=501b209cccd323ac00bf5ac15b406cb4">Caze TV (2)</option>
             </select>
         </div>
         <div class="video-container">
@@ -320,6 +339,40 @@
             const iframe = document.getElementById(iframeId);
             iframe.src = selectedUrl;
         }
+
+        // Initialize Shaka Player for Caze TV Prime
+        async function initCazePrimePlayer() {
+            const manifestUri = 'https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/3ynrpdanq2/out/v1/81fd4c26584044d2b1a1cc5b32fa9af0/cenc.mpd';
+            const drmKeyId = '34475edab991ad5e92548aebd710410a';
+            const drmKey = '501b209cccd323ac00bf5ac15b406cb4';
+
+            const video = document.getElementById('cazetv-prime-video');
+            const ui = video['ui'];
+            if (!ui) return;
+            const controls = ui.getControls();
+            const player = controls.getPlayer();
+
+            player.configure({
+                drm: {
+                    clearKeys: {
+                        [drmKeyId]: drmKey
+                    }
+                }
+            });
+
+            player.addEventListener('error', (event) => {
+                console.error('Shaka error code', event.detail.code, event.detail);
+            });
+
+            try {
+                await player.load(manifestUri);
+                console.log('Caze TV Prime stream loaded successfully!');
+            } catch (error) {
+                console.error('Error loading Caze TV Prime stream', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initCazePrimePlayer);
     </script>
 
 </body>
