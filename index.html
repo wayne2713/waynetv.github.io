@@ -1,174 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WayneTV - Live Matches</title>
+    <title>WayneTV - Premium Live Streams</title>
     <style>
         :root {
-            --bg-deep: #0b0e14;
-            --bg-card: #131822;
-            --bg-header: #19202e;
-            --accent-green: #22c55e;
-            --accent-green-glow: rgba(34, 197, 94, 0.25);
-            --accent-red: #ef4444;
-            --accent-red-glow: rgba(239, 68, 68, 0.4);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --card-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+            --bg-base: #06080d;
+            --bg-surface: #0e131f;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(24, 32, 50, 0.85);
+            --accent-glow: #10b981;
+            --accent-purple: #8b5cf6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-hover: rgba(16, 185, 129, 0.3);
+            --shadow-lux: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
         }
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg-deep);
+            background: var(--bg-base);
             color: var(--text-main);
             margin: 0;
-            padding: 25px 15px;
+            padding: 40px 20px;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.04) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(239, 68, 68, 0.03) 0%, transparent 45%);
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.04) 0%, transparent 60%);
             background-attachment: fixed;
+            min-height: 100vh;
         }
 
-        .logo-container {
+        .hero-container {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 50px;
         }
 
-        h1 {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 38px;
+        .brand-logo {
+            display: inline-block;
+            margin: 0 0 10px 0;
+            font-size: 44px;
             font-weight: 900;
-            text-align: center;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #22c55e, #a855f7, #3b82f6);
+            background: linear-gradient(135deg, #34d399 0%, #a78bfa 50%, #60a5fa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.4));
-            letter-spacing: 2px;
+            filter: drop-shadow(0 0 35px rgba(167, 139, 250, 0.3));
+            letter-spacing: 3px;
+        }
+
+        .brand-subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .section-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            max-width: 750px;
-            margin: 40px auto 20px auto;
+            margin-bottom: 24px;
         }
 
         .section-indicator {
-            width: 5px;
-            height: 24px;
-            background: #a855f7;
+            width: 6px;
+            height: 22px;
+            background: linear-gradient(to bottom, #a78bfa, #60a5fa);
             border-radius: 4px;
-            box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
         }
 
         .section-header h2 {
             margin: 0;
             color: var(--text-main);
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .stream-card {
-            margin-bottom: 35px;
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
             overflow: hidden;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: var(--card-shadow);
-            position: relative;
-            background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lux);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: pointer;
         }
 
         .stream-card:hover {
-            border-color: rgba(34, 197, 94, 0.3);
+            background: var(--bg-card-hover);
+            border-color: var(--border-glass-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.15);
         }
 
         .card-header {
-            padding: 16px 20px;
-            background: var(--bg-header);
+            padding: 18px 24px;
+            background: rgba(14, 19, 31, 0.6);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-glass);
         }
 
         .card-header h3 {
             margin: 0;
             color: var(--text-main);
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: -0.2px;
+            letter-spacing: -0.1px;
         }
 
-        .badge-live-now {
-            background: rgba(34, 197, 94, 0.12);
-            color: var(--accent-green);
+        .badge-live {
+            background: rgba(16, 185, 129, 0.1);
+            color: #34d399;
             font-size: 11px;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 30px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             display: flex;
             align-items: center;
             gap: 6px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
         }
 
-        .badge-live-now::before {
+        .badge-live::before {
             content: '';
-            width: 7px;
-            height: 7px;
-            background-color: var(--accent-green);
+            width: 6px;
+            height: 6px;
+            background-color: #34d399;
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-green);
-            animation: pulse-green 2s infinite;
+            box-shadow: 0 0 8px #34d399;
+            animation: live-pulse 2s infinite;
         }
 
-        @keyframes pulse-green {
+        @keyframes live-pulse {
             0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 0.4; transform: scale(0.85); }
             100% { opacity: 1; transform: scale(1); }
-        }
-
-        .source-bar {
-            background: rgba(11, 14, 20, 0.6);
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .source-select {
-            background: var(--bg-deep);
-            color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            outline: none;
-            cursor: pointer;
-            width: 100%;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            appearance: none; 
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 16px;
-        }
-
-        .source-select:hover, .source-select:focus {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2);
         }
 
         .video-container {
@@ -190,148 +176,39 @@
 </head>
 <body>
 
-    <div class="logo-container">
-        <h1>WayneTV</h1>
+    <div class="hero-container">
+        <h1 class="brand-logo">WayneTV</h1>
+        <p class="brand-subtitle">Prime Streaming Experience</p>
     </div>
 
-    <!-- LIVE MATCHES SECTION -->
-    <div class="section-header">
-        <div class="section-indicator"></div>
-        <h2>Live Matches</h2>
-    </div>
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-indicator"></div>
+            <h2>Live Matches</h2>
+        </div>
 
-    <!-- Caze TV Prime -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Caze TV Prime</h3>
-            <span class="badge-live-now">LIVE NOW</span>
+        <!-- M+ Laliga - Source 1 -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>M+ Laliga (Source 1)</h3>
+                <span class="badge-live">LIVE NOW</span>
+            </div>
+            <div class="video-container">
+                <iframe src="https://dlive.sx/stream/stream-84.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="video-container">
-            <iframe src="https://cmvv.lovable.app/watch/sports/skysports" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
 
-    <!-- Al Nassr vs KLJ -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Al Nassr vs KLJ</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://dlive.sx/cast/stream-756.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- NBC -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>NBC</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://dlive.sx/plus/stream-53.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+        <!-- M+ Laliga - Source 2 -->
+        <div class="stream-card">
+            <div class="card-header">
+                <h3>M+ Laliga (Source 2)</h3>
+                <span class="badge-live">LIVE NOW</span>
+            </div>
+            <div class="video-container">
+                <iframe src="https://streamxhd.com/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
-
-    <!-- Tottenham vs Everton -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Tottenham vs Everton</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://dlive.sx/cast/stream-53.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Al Nassr vs Abha -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Al Nassr vs Abha</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'aln-abha-stream')">
-                <option value="https://dlive.sx/player/stream-521.php">Spanish</option>
-                <option value="https://iplayer.is/echo/d3d0464f821795ddc672bc916dcc187e">Portuguese</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="aln-abha-stream" src="https://dlive.sx/player/stream-521.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Barcelona vs Valencia -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Barcelona vs Valencia</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://streamxhd.st/live2.php?stream=mlaliga" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Chelsea vs Leeds -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Chelsea vs Leeds</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://dlive.sx/cast/stream-38.php" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Caze TV -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Caze TV</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="//cdn.stmify.com/embed-free/v1/cazetv-br-jw" width="100%" height="100%" style="border:0;" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" allowfullscreen allow="encrypted-media"></iframe>
-        </div>
-    </div>
-
-    <!-- ESPN -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>ESPN</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="video-container">
-            <iframe src="https://streamxhd.com/live2.php?stream=espndeportes" width="100%" height="100%" style="border:0;" scrolling="no" frameborder="no" allow="fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Real Madrid vs Rayo Valencia -->
-    <div class="stream-card">
-        <div class="card-header">
-            <h3>Real Madrid vs Rayo Valencia</h3>
-            <span class="badge-live-now">LIVE NOW</span>
-        </div>
-        <div class="source-bar">
-            <select class="source-select" onchange="changeStream(this, 'rma-ray-stream')">
-                <option value="https://epiembeds.online/embed/beinsports2-sa">BeIN Sports 2 SA</option>
-                <option value="https://epiembeds.online/embed/laliga-1">ESPN / LaLiga 1</option>
-                <option value="https://epiembeds.online/embed/daznlaliga-es">DAZN LaLiga ES</option>
-                <option value="https://streamxhd.com/live2.php?stream=daznlaliga">DAZN</option>
-                <option value="//cdn.stmify.com/embed-free/v1/cazetv-br-jw">Caze TV</option>
-            </select>
-        </div>
-        <div class="video-container">
-            <iframe id="rma-ray-stream" src="https://epiembeds.online/embed/beinsports2-sa" width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <script>
-        function changeStream(selectElement, iframeId) {
-            const selectedUrl = selectElement.value;
-            const iframe = document.getElementById(iframeId);
-            iframe.src = selectedUrl;
-        }
-    </script>
 
 </body>
 </html>
